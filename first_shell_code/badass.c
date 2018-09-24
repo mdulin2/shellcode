@@ -13,10 +13,15 @@ char shellcode[] = "\xbb\x00\x00\x00\x00"
                     "\xb8\x01\x00\x00\x00"
                     "\xcd\x80";
 
+// This initially did not work... Not entirely sure why! But, it works now; life goes on! These two shellcodes do the same thing. The only difference is that one is usable in an injection, while the other will likely not because of the null bytes in there. 
+char shellcode_shorten[] = "\x31\xdb"
+                    "\xb0\x01"
+                    "\xcd\x80";
+
 typedef int(*shellcode_t)();
 
 int main()
 {
-    shellcode_t ret = (shellcode_t)shellcode;
+    shellcode_t ret = (shellcode_t)shellcode_shorten;
     ret();
 }

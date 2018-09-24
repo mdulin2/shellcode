@@ -1,5 +1,6 @@
 There is a particular way to go about this...
-
+- Say, you want to write shellcode for the exit function. This is the process to go through...
 - The exit.c file is meant to let us see actual commands for an exit call, in assembly. Allows us to get a foothold on what the exit looks like.
 - shellcode_exit.asm is the assembly we decided to use, given from the exit.c files break down. From here, we can find the opcodes, which can be used in assembly land.
-- - The badass.c file is meant to test the shellcode itself.
+- The badass.c file is meant to test the shellcode itself. Put this into the 'shellcode' character array to test it.
+- Make it actually usable! The current issue with it is that is has a ton of 0x00's. Which, is the null byte, which will end the string. Go from the shellcode_exit.asm, rewrite the function to not have 0x00's in them. Then, repeat the steps afterwards until a nice, working and compact shellcode has been written. 
